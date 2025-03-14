@@ -27,5 +27,18 @@ async function main(){
     });
     await client.send(putItemCommand);
 
+     const getItemCommand=new GetItemCommand({
+        TableName:"youtube-demo",
+        Key:{
+            "serial_no":{
+                "S":"0001"
+            }
+        }
+    });
+    const responce=await client.send(getItemCommand);
+        console.log({
+            items:responce.Item
+        })
+
 }
 main();
